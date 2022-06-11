@@ -1,0 +1,10 @@
+version: "3"
+services:
+  gpbmdb:
+    container_name: shop-db
+    image: postgres:12
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      - POSTGRES_DB=shop
+      - POSTGRES_PASSWORD=qwerty
