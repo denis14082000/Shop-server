@@ -1,5 +1,6 @@
 package org.dkazantsev.shopPractice.products.controllers
 
+import io.jsonwebtoken.Jwts
 import org.dkazantsev.shopPractice.products.controllers.dto.CreateProductRequest
 import org.dkazantsev.shopPractice.products.controllers.dto.ProductElem
 import org.dkazantsev.shopPractice.products.controllers.dto.ProductListResponse

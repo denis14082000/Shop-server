@@ -1,6 +1,6 @@
 package org.dkazantsev.shopPractice.products.service.impl
 
-import org.dkazantsev.shopPractice.products.models.Product
+import org.dkazantsev.shopPractice.products.models.ProductEntity
 import org.dkazantsev.shopPractice.products.repositories.ProductRepository
 import org.dkazantsev.shopPractice.products.service.ProductService
 import org.dkazantsev.shopPractice.products.service.dto.CreateProductDto
@@ -32,7 +32,7 @@ open class ProductServiceImpl(
     @Transactional
     override fun createProduct(createProductDto: CreateProductDto) {
         productRepository.save(
-            Product().apply {
+            ProductEntity().apply {
                 name = createProductDto.name
                 price = createProductDto.price
             }

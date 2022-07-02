@@ -1,18 +1,19 @@
 package org.dkazantsev.shopPractice.products.models
 
 import javax.persistence.*
-import kotlin.properties.Delegates
 
 @Entity
-@Table(name = "Product")
-class Product {
+@Table(name = "product")
+class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null
 
+    @Column(name = "name", nullable = false)
     lateinit var name: String
 
-    var price: Double? = null
+    @Column(name = "price", nullable = false)
+    var price: Double = 0.0
 
 }
