@@ -8,3 +8,5 @@ spring:
       maximumPoolSize: 10
       minimumIdle: 1
       poolName: SpringBootJPAHikariCP
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
