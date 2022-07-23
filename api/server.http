@@ -3,14 +3,14 @@ POST localhost:8080/product
 Content-Type: application/json
 
 {
-  "name": "test",
-  "price": 1200,
-  "description": null
+  "name": "wwtte",
+  "price": 12.00,
+  "description": "eteawrt"
 }
 
 ###
 # @name get all products
-GET localhost:8080/product
+GET 127.0.0.1:8080/product/
 
 ###
 # @name update product

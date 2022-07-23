@@ -20,6 +20,9 @@ class ProductEntity {
     @Column(name = "price", nullable = false)
     var price: Double = 0.0
 
+    @Column(name = "image_url", nullable = true)
+    var imageUrl: String? = null
+
     @Column(name = "description", nullable = true)
     var description: String? = null
 

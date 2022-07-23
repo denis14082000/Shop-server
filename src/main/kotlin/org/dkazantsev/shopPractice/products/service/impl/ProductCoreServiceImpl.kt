@@ -1,5 +1,6 @@
 package org.dkazantsev.shopPractice.products.service.impl
 
+import org.dkazantsev.shopPractice.products.converters.toProduct
 import org.dkazantsev.shopPractice.products.models.ProductEntity
 import org.dkazantsev.shopPractice.products.repositories.ProductRepository
 import org.dkazantsev.shopPractice.products.service.ProductCoreService
@@ -10,6 +11,7 @@ import org.dkazantsev.shopPractice.products.service.dto.Product
 import org.dkazantsev.shopPractice.products.service.dto.ProductList
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.*
 
 @Service
 open class ProductCoreServiceImpl(
@@ -21,24 +23,26 @@ open class ProductCoreServiceImpl(
         val productList = productRepository.findAll()
 
         return ProductList(
-            productList = productList.map {product ->
-                Product(
-                    id = product.publicId,
-                    name = product.name,
-                    price = product.price,
-                    description = product.description
-                )
-            }
+            productList = productList.map(ProductEntity::toProduct)
         )
+    }
+
+    @Transactional(readOnly = true)
+    override fun get(id: UUID): Product {
+        return productRepository.findByPublicIdOrThrow(id)
+            .toProduct()
     }
 
     @Transactional
     override fun create(createProduct: CreateProduct) {
+        val publicId = UUID.randomUUID()
+
         productRepository.save(
             ProductEntity().apply {
-                name = createProduct.name
-                price = createProduct.price
-                description = createProduct.description
+                this.name = createProduct.name
+                this.publicId = publicId
+                this.price = createProduct.price
+                this.description = createProduct.description
             }
         )
     }
