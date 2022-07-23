@@ -1,17 +1,30 @@
+# @name create product
 POST localhost:8080/product
 Content-Type: application/json
 
 {
   "name": "test",
-  "price": 1200
+  "price": 1200,
+  "description": null
 }
 
 ###
-
+# @name get all products
 GET localhost:8080/product
 
 ###
+# @name update product
+PUT localhost:8080/product/8133930b-6bca-49ff-a878-dd72f8d3a332
+Content-Type: application/json
 
+{
+  "name": "wqrqw",
+  "price": 213.24,
+  "description": "qwe"
+}
+
+###
+### Not implemented
 POST http://localhost:8080/user/auth
 Content-Type: application/json
 

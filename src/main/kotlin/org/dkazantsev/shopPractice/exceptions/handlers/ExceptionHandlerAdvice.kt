@@ -11,7 +11,7 @@ class ExceptionHandlerAdvice(
 ) {
 
     @ExceptionHandler(value = [Exception::class])
-    fun invoke(exception: Exception): ExceptionResponse {
+    fun invoke(exception: Exception): ExceptionResponse { //TODO(CHANGE RESOLVERS TO MAPPING ERROR)
         val result = exceptionResolversList
             .firstNotNullOfOrNull { it.invoke(exception) }
             ?: ExceptionResponse(
